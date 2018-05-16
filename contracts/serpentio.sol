@@ -7,7 +7,7 @@ pragma solidity ^0.4.21;
  */
 
 /**
- * The Serpent contract spread its acummulated balance between investors using a non-linear scheme, inside a period of time.
+ * The Serpent contract distributes its acummulated balance between investors using a non-linear scheme, inside a period of time.
  * As such, every new investor help to fund previous investors, under the promise that future new investors will fund itself.
  * Result: Early investors receive more funds than last investors.
  */
