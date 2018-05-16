@@ -89,7 +89,7 @@ contract Serpent is Ownable {
 	using SafeMath for uint256;
 
 	// everyone should check this measure to find out how much they have earned.
-	mapping (address => uint) public investorReturn;
+	mapping (address => uint256) public investorReturn;
 
 	uint256 public SerpenSegmentCount;
 	uint256 public SerpentCountDown;
@@ -195,15 +195,15 @@ contract Serpent is Ownable {
 		}
 	}
 	
-	function CollectReturns () public {
+	function CollectReturns () external {
 
 		uint256 currentTime = uint256(block.timestamp);
+		uint256 amountToCollect = getReturns(msg.sender);
 		require (currentTime > SerpentCountDown); // collect if serpent has finished
+		require(address(this).balance >= amountToCollect);
 
-		address thisSerpent = msg.sender;
-		uint256 amountToCollect = investorReturn[thisSerpent];
-		thisSerpent.transfer(amountToCollect);
-		investorReturn[thisSerpent] = 0;	
+		address(msg.sender).transfer(amountToCollect);
+		investorReturn[msg.sender] = 0;
 	}
 
 	function getBalance () public view returns(uint256) {
