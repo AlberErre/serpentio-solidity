@@ -221,6 +221,10 @@ contract Serpent is Ownable {
 	function getReturns (address _address) public view returns(uint256) {
 		return uint256(investorReturn[_address]);
 	}
+	
+	function SerpentIsRunning () public view returns(bool) {
+		return bool(uint256(block.timestamp) < SerpentCountDown);
+	}
 
   // End of contract
 }
