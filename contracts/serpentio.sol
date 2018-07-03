@@ -112,6 +112,10 @@ contract Serpent is Ownable {
 		SerpenSegmentCount = 0;
 		SerpentCountDown = uint256(block.timestamp);
 	}
+	
+	function UpdateCountDown(uint256 _newDate) {
+		SerpentCountDown = _newDate;
+	}
 
 	function Play (string _quote) payable public {
 
